@@ -1,0 +1,43 @@
+managed implementation in class ZCL_LA02_BP_SALESORDER unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZLA02_CE_SALESORDER alias SalesOrder
+draft table zla02_d_so
+authorization master ( instance )
+lock master
+total etag createdAt
+early numbering
+with unmanaged save
+
+{
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  field ( readonly ) uuid, createdAt, salesOrderId;
+
+  determination prepareForSave on save { create; }
+
+  mapping for zla02_d_so corresponding
+  {
+    uuid         = uuid;
+    docType      = doctype;
+    salesOrg     = salesorg;
+    distrChan    = distrchan;
+    division     = division;
+    soldTo       = soldto;
+    testRun      = testrun;
+    filename     = filename;
+    mimetype     = mimetype;
+    attachment   = attachment;
+    salesOrderId = salesorderid;
+    createdAt    = createdat;
+  }
+}

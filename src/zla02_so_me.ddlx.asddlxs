@@ -1,0 +1,77 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+  typeName: 'Sales Order',
+  typeNamePlural: 'Sales Orders',
+  title: { value: 'uuid' }
+}
+annotate entity ZLA02_CE_SALESORDER with
+{
+
+  @UI.facet: [
+         {
+           id: 'GeneralInfo',
+           purpose: #STANDARD,
+           type: #IDENTIFICATION_REFERENCE,
+           label: 'Datos del Pedido',
+           position: 10
+         }
+       ]
+
+//  @UI.lineItem: [{
+//    type: #FOR_ACTION,
+//    dataAction: 'callRFC',
+//    label: 'Create SO',
+//    position: 1,
+//    importance: #HIGH
+//  }]
+
+  @UI.hidden: true
+  uuid;
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10, label: 'Document Type' }]
+  @EndUserText.label: 'Document Type'
+  docType;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20, label: 'Sales Organization' }]
+  @EndUserText.label: 'Sales Organization'
+  salesOrg;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30, label: 'Distribution Channel' }]
+  @EndUserText.label: 'Distribution Channel'
+  distrChan;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40, label: 'Division' }]
+  @EndUserText.label: 'Division'
+  division;
+
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50, label: 'Sold To Party' }]
+  @EndUserText.label: 'Sold To Party'
+  soldTo;
+
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60, label: 'Test Run' }]
+  @EndUserText.label: 'Test Run'
+  testRun;
+  @UI.lineItem: [{ position:70 }]
+  @UI.identification: [{ position: 70, label: 'File Name' }]
+  @EndUserText.label: 'File Name'
+  filename;
+  @UI.hidden: true
+  mimetype;
+  @UI.lineItem: [{ position:80 }]
+  @UI.identification: [{ position: 80, label: 'Upload File' }]
+  @EndUserText.label: 'Attachment'
+  attachment;
+  @UI.hidden: true
+  createdAt;
+  
+  @UI.lineItem: [{ position: 90 }]
+  @UI.identification: [{ position: 90, label: 'Sales Order ID' }]
+  @EndUserText.label: 'Sales Order ID'
+  salesorderid;
+
+}
